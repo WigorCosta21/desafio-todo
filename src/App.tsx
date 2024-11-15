@@ -19,7 +19,7 @@ const App = () => {
             Criar <PlusCircle color="#f2f2f2" size={16} weight="bold" />
           </Button>
         </div>
-        <HeaderTask />
+        <HeaderTask tasksCounter={0} completTasksCounter={0} />
         <TaskEmpty />
       </section>
     </main>
