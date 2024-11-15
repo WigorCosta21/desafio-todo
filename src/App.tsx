@@ -5,6 +5,7 @@ import { Button } from "./components/Button";
 
 import styles from "./App.module.css";
 import "./global.css";
+import { HeaderTask } from "./components/HeaderTask";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
             Criar <PlusCircle color="#f2f2f2" size={16} weight="bold" />
           </Button>
         </div>
+        <HeaderTask />
       </section>
     </main>
   );

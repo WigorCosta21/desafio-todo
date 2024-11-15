@@ -6,5 +6,5 @@
 .taskContainer {
     display: flex;
     gap: 0.5rem;
-    transform: translateY(-50%);
+    margin: -1.6875rem 0 4rem;
 }
