@@ -6,6 +6,7 @@ import { Button } from "./components/Button";
 import styles from "./App.module.css";
 import "./global.css";
 import { HeaderTask } from "./components/HeaderTask";
+import { TaskEmpty } from "./components/TaskEmpty";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
           </Button>
         </div>
         <HeaderTask />
+        <TaskEmpty />
       </section>
     </main>
   );
