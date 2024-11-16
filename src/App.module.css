@@ -4,9 +4,17 @@
 }
 
 .taskContainer {
+    margin: -1.6875rem 0 4rem;
+}
+
+.InputAndButton {
     display: flex;
     gap: 0.5rem;
-    margin: -1.6875rem 0 4rem;
+    margin-bottom: 0.5rem;
+}
+
+.error {
+    color: var(--danger);
 }
 
 .list {

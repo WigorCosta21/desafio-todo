@@ -17,6 +17,7 @@ import "./global.css";
 const App = () => {
   const [tasks, setTasks] = useState<ITask[]>([]);
   const [inputTask, setInputTask] = useState("");
+  const [isValid, setIsValid] = useState(false);
 
   const handleToggleComplete = (id: string) => {
     const newTask = [...tasks];
@@ -35,6 +36,7 @@ const App = () => {
 
   const handleAddTask = () => {
     if (inputTask.trim() === "") {
+      setIsValid(true);
       return;
     }
 
@@ -46,6 +48,7 @@ const App = () => {
 
     setTasks([newTask, ...tasks]);
     setInputTask("");
+    setIsValid(false);
   };
 
   const tasksCounter = tasks.length;
@@ -59,14 +62,19 @@ const App = () => {
       <Header />
       <section className={styles.container}>
         <div className={styles.taskContainer}>
-          <Input
-            placeholder="Adicione uma nova tarefa"
-            value={inputTask}
-            onChange={(e) => setInputTask(e.target.value)}
-          />
-          <Button onClick={handleAddTask}>
-            Criar <PlusCircle color="#f2f2f2" size={16} weight="bold" />
-          </Button>
+          <div className={styles.InputAndButton}>
+            <Input
+              placeholder="Adicione uma nova tarefa"
+              value={inputTask}
+              onChange={(e) => setInputTask(e.target.value)}
+            />
+            <Button onClick={handleAddTask}>
+              Criar <PlusCircle color="#f2f2f2" size={16} weight="bold" />
+            </Button>
+          </div>
+          {isValid && (
+            <p className={styles.error}>O campo não pode estar vazio!</p>
+          )}
         </div>
 
         <HeaderTask
