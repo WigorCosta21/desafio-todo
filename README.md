@@ -1,50 +1,35 @@
-# React + TypeScript + Vite
+# To-Do List: Aplicação de Controle de Tarefas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é um projeto desenvolvido como parte de um desafio proposto pela Rocketseat. A aplicação é uma **to-do list** que permite gerenciar tarefas de forma simples e eficiente.
 
-Currently, two official plugins are available:
+## 📋 Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A aplicação possui as seguintes funcionalidades:
 
-## Expanding the ESLint configuration
+- **Adicionar uma nova tarefa**: Permite criar uma tarefa com uma descrição personalizada.
+- **Marcar e desmarcar uma tarefa como concluída**: Gerencie o status de conclusão das tarefas.
+- **Remover uma tarefa da listagem**: Exclua tarefas que não são mais necessárias.
+- **Mostrar o progresso de conclusão das tarefas**: Exibe o número total de tarefas e quantas foram concluídas.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 🛠️ Tecnologias Utilizadas
 
-- Configure the top-level `parserOptions` property like this:
+- **React**: Biblioteca JavaScript para construção de interfaces de usuário.
+- **TypeScript**: Linguagem de programação que adiciona tipagem estática ao JavaScript.
+- **Phosphor Icons**: Biblioteca de ícones flexíveis e modernos.
+- **CSS Modules**: Estilização encapsulada e modular.
+- **Local Storage**: Persistência de dados local no navegador.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 🚀 Como executar o projeto
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/seu-usuario/todo-list
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## 📌 Desafios e Aprendizados
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+Durante o desenvolvimento deste projeto, foram explorados conceitos como:
+
+- Gerenciamento de estado com React.
+- Persistência de dados usando Local Storage.
+- Modularização e reutilização de componentes.
+- Manipulação de listas e filtros.
