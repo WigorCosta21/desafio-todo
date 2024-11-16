@@ -13,6 +13,15 @@ import "./global.css";
 const App = () => {
   const [tasks, setTasks] = useState(TaskData);
 
+  const handleToggleComplete = (id: number) => {
+    const newTask = [...tasks];
+    newTask.map((task) =>
+      task.id === id ? (task.isComplete = !task.isComplete) : task
+    );
+
+    setTasks(newTask);
+  };
+
   return (
     <main>
       <Header />
@@ -28,7 +37,7 @@ const App = () => {
         <ul className={styles.list}>
           {tasks.map((task) => (
             <li key={task.id}>
-              <Task task={task} />
+              <Task task={task} onToggleComplete={handleToggleComplete} />
             </li>
           ))}
         </ul>
