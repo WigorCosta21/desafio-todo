@@ -17,7 +17,9 @@ export const HeaderTask = ({
       </div>
       <div className={styles.content}>
         <p>Concluídas</p>
-        <span>{completTasksCounter}</span>
+        <span>
+          {tasksCounter > 0 ? `${completTasksCounter} de ${tasksCounter}` : 0}
+        </span>
       </div>
     </header>
   );

@@ -22,6 +22,12 @@ const App = () => {
     setTasks(newTask);
   };
 
+  const tasksCounter = tasks.length;
+
+  const completTasksCounter = tasks.filter(
+    (task) => task.isComplete === true
+  ).length;
+
   return (
     <main>
       <Header />
@@ -32,7 +38,10 @@ const App = () => {
             Criar <PlusCircle color="#f2f2f2" size={16} weight="bold" />
           </Button>
         </div>
-        <HeaderTask tasksCounter={0} completTasksCounter={0} />
+        <HeaderTask
+          tasksCounter={tasksCounter}
+          completTasksCounter={completTasksCounter}
+        />
 
         <ul className={styles.list}>
           {tasks.map((task) => (

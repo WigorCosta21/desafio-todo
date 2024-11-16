@@ -25,11 +25,9 @@
 }
 
 .content span {
-    width: 25px;
-    height: 19px;
     font-size: 0.75rem;
     font-weight: bold;
-    border-radius: 50%;
+    border-radius: 999px;
     padding: 0.125rem 0.5rem;
     color: var(--gray-200);
     background-color: var(--gray-400);
