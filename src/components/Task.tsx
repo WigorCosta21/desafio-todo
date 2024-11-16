@@ -5,8 +5,8 @@ import styles from "./Task.module.css";
 
 type TaskProps = {
   task: ITask;
-  onToggleComplete: (id: number) => void;
-  onDeleteTask: (id: number) => void;
+  onToggleComplete: (id: string) => void;
+  onDeleteTask: (id: string) => void;
 };
 
 export const Task = ({ task, onToggleComplete, onDeleteTask }: TaskProps) => {

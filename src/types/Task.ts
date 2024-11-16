@@ -1,5 +1,5 @@
 export type ITask = {
-  id: number;
+  id: string;
   text: string;
   isComplete: boolean;
 };

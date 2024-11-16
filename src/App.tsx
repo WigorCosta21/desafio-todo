@@ -1,20 +1,24 @@
 import { useState } from "react";
 import { PlusCircle } from "@phosphor-icons/react";
-import { Header } from "./components/Header";
-import { Input } from "./components/Input";
+import { v4 as uuidv4 } from "uuid";
+
 import { Button } from "./components/Button";
+import { Header } from "./components/Header";
 import { HeaderTask } from "./components/HeaderTask";
+import { Input } from "./components/Input";
 import { Task } from "./components/Task";
-import { TaskData } from "./data/Task";
+import { TaskEmpty } from "./components/TaskEmpty";
+
+import { ITask } from "./types/Task";
 
 import styles from "./App.module.css";
 import "./global.css";
-import { TaskEmpty } from "./components/TaskEmpty";
 
 const App = () => {
-  const [tasks, setTasks] = useState(TaskData);
+  const [tasks, setTasks] = useState<ITask[]>([]);
+  const [inputTask, setInputTask] = useState("");
 
-  const handleToggleComplete = (id: number) => {
+  const handleToggleComplete = (id: string) => {
     const newTask = [...tasks];
     newTask.map((task) =>
       task.id === id ? (task.isComplete = !task.isComplete) : task
@@ -23,10 +27,25 @@ const App = () => {
     setTasks(newTask);
   };
 
-  const handleDeleteTask = (id: number) => {
+  const handleDeleteTask = (id: string) => {
     const newTask = tasks.filter((task) => task.id !== id);
 
     setTasks(newTask);
+  };
+
+  const handleAddTask = () => {
+    if (inputTask.trim() === "") {
+      return;
+    }
+
+    const newTask: ITask = {
+      id: uuidv4(),
+      text: inputTask,
+      isComplete: false,
+    };
+
+    setTasks([newTask, ...tasks]);
+    setInputTask("");
   };
 
   const tasksCounter = tasks.length;
@@ -40,11 +59,16 @@ const App = () => {
       <Header />
       <section className={styles.container}>
         <div className={styles.taskContainer}>
-          <Input placeholder="Adicione uma nova tarefa" />
-          <Button>
+          <Input
+            placeholder="Adicione uma nova tarefa"
+            value={inputTask}
+            onChange={(e) => setInputTask(e.target.value)}
+          />
+          <Button onClick={handleAddTask}>
             Criar <PlusCircle color="#f2f2f2" size={16} weight="bold" />
           </Button>
         </div>
+
         <HeaderTask
           tasksCounter={tasksCounter}
           completTasksCounter={completTasksCounter}
