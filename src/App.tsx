@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PlusCircle } from "@phosphor-icons/react";
 import { v4 as uuidv4 } from "uuid";
 
@@ -13,9 +13,13 @@ import { ITask } from "./types/Task";
 
 import styles from "./App.module.css";
 import "./global.css";
+import {
+  loadTasksFromLocalStorage,
+  saveTasksToLocalStorage,
+} from "./util/localStorage";
 
 const App = () => {
-  const [tasks, setTasks] = useState<ITask[]>([]);
+  const [tasks, setTasks] = useState<ITask[]>(loadTasksFromLocalStorage);
   const [inputTask, setInputTask] = useState("");
   const [isValid, setIsValid] = useState(false);
 
@@ -50,6 +54,10 @@ const App = () => {
     setInputTask("");
     setIsValid(false);
   };
+
+  useEffect(() => {
+    saveTasksToLocalStorage(tasks);
+  }, [tasks]);
 
   const tasksCounter = tasks.length;
 
