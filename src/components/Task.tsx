@@ -6,9 +6,10 @@ import styles from "./Task.module.css";
 type TaskProps = {
   task: ITask;
   onToggleComplete: (id: number) => void;
+  onDeleteTask: (id: number) => void;
 };
 
-export const Task = ({ task, onToggleComplete }: TaskProps) => {
+export const Task = ({ task, onToggleComplete, onDeleteTask }: TaskProps) => {
   const checkedSpan = task.isComplete ? styles.checked : styles.unchecked;
   const checkedParagraph = task.isComplete ? styles["paragraph-checked"] : "";
 
@@ -21,7 +22,7 @@ export const Task = ({ task, onToggleComplete }: TaskProps) => {
         {task.isComplete && <Check size={8} />}
       </span>
       <p className={`${styles.paragraph} ${checkedParagraph}`}>{task.text}</p>
-      <button className={styles.button}>
+      <button onClick={() => onDeleteTask(task.id)} className={styles.button}>
         <Trash size={16} color="#808080" />
       </button>
     </div>

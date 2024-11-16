@@ -9,6 +9,7 @@ import { TaskData } from "./data/Task";
 
 import styles from "./App.module.css";
 import "./global.css";
+import { TaskEmpty } from "./components/TaskEmpty";
 
 const App = () => {
   const [tasks, setTasks] = useState(TaskData);
@@ -18,6 +19,12 @@ const App = () => {
     newTask.map((task) =>
       task.id === id ? (task.isComplete = !task.isComplete) : task
     );
+
+    setTasks(newTask);
+  };
+
+  const handleDeleteTask = (id: number) => {
+    const newTask = tasks.filter((task) => task.id !== id);
 
     setTasks(newTask);
   };
@@ -43,13 +50,21 @@ const App = () => {
           completTasksCounter={completTasksCounter}
         />
 
-        <ul className={styles.list}>
-          {tasks.map((task) => (
-            <li key={task.id}>
-              <Task task={task} onToggleComplete={handleToggleComplete} />
-            </li>
-          ))}
-        </ul>
+        {tasksCounter > 0 ? (
+          <ul className={styles.list}>
+            {tasks.map((task) => (
+              <li key={task.id}>
+                <Task
+                  task={task}
+                  onToggleComplete={handleToggleComplete}
+                  onDeleteTask={handleDeleteTask}
+                />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <TaskEmpty />
+        )}
       </section>
     </main>
   );
