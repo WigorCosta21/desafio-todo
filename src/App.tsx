@@ -1,14 +1,18 @@
+import { useState } from "react";
 import { PlusCircle } from "@phosphor-icons/react";
 import { Header } from "./components/Header";
 import { Input } from "./components/Input";
 import { Button } from "./components/Button";
+import { HeaderTask } from "./components/HeaderTask";
+import { Task } from "./components/Task";
+import { TaskData } from "./data/Task";
 
 import styles from "./App.module.css";
 import "./global.css";
-import { HeaderTask } from "./components/HeaderTask";
-import { TaskEmpty } from "./components/TaskEmpty";
 
 const App = () => {
+  const [tasks, setTasks] = useState(TaskData);
+
   return (
     <main>
       <Header />
@@ -20,7 +24,14 @@ const App = () => {
           </Button>
         </div>
         <HeaderTask tasksCounter={0} completTasksCounter={0} />
-        <TaskEmpty />
+
+        <ul className={styles.list}>
+          {tasks.map((task) => (
+            <li key={task.id}>
+              <Task task={task} />
+            </li>
+          ))}
+        </ul>
       </section>
     </main>
   );
